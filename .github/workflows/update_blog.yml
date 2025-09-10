@@ -5,6 +5,7 @@ on:
   push:
       branches:
         - main  # 또는 워크플로우를 트리거하고 싶은 브랜치 이름
+  workflow_dispatch:	# 수동 실행 트리거 추가
   schedule:
     - cron: '0 0 * * *'  # 매일 자정에 업로드, 한국시간 기준 오전 9시
 
@@ -15,6 +16,12 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@v2
+
+    - name: Set time zone
+      run: |
+        sudo ln -sf /usr/share/zoneinfo/Asia/Seoul /etc/localtime
+        echo "Asia/Seoul" | sudo tee /etc/timezone
+        date
 
     - name: Push changes
       run: |
