@@ -31,7 +31,7 @@ jobs:
         
         # 깃허브 아이디
         # 깃허브 이메일
-        # https://${{SecretKey}}@github.com/깃허브 아이디/레포지토리이름.git
+        # https://${{secrets.SecretKey}}@github.com/깃허브 아이디/레포지토리이름.git
 
     - name: Set up Python
       uses: actions/setup-python@v2
